@@ -22,6 +22,7 @@ void AConvertToCPP::BeginPlay()
 void AConvertToCPP::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	//GitTest
 
 }
 
