@@ -82,7 +82,7 @@ protected:
 	float CurrentRefillDelayTime;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Movement")
 	bool bIsSprinting = false;
-	//
+	
 	float WalkSpeed;
 	float SprintSpeed;
 
