@@ -3,6 +3,8 @@
 
 #include "Labwork2/GameSlot.h"
 
+#include "TBPlayerController.h"
+
 // Sets default values
 AGameSlot::AGameSlot()
 {
@@ -27,7 +29,16 @@ AGameSlot::AGameSlot()
 void AGameSlot::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	OnClicked.AddUniqueDynamic(this, &AGameSlot::OnGridClicked);
+}
+
+void AGameSlot::OnGridClicked(AActor* TouchedActor, FKey ButtonPressed)
+{
+	if (auto PlayerController = GWorld->GetFirstPlayerController<ATBPlayerController>())
+	{
+		PlayerController->OnActorClicked(this, ButtonPressed);
+	}
 }
 
 // Called every frame

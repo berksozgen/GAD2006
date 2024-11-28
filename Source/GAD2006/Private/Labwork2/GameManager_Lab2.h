@@ -6,6 +6,7 @@
 #include "GameGrid.h"
 #include "UnitBase.h"
 #include "GameFramework/Actor.h"
+#include "Command.h"
 #include "GameManager_Lab2.generated.h"
 
 USTRUCT(BlueprintType)
@@ -51,6 +52,9 @@ public:
 	UPROPERTY(EditAnywhere)
 	AGameGrid* GameGrid;
 
+	UFUNCTION(BlueprintCallable)
+	bool UndoLastMove();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -59,4 +63,8 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+private:
+	AUnitBase* ThePlayer;
+	TArray<TSharedRef<Command>> CommandPool;
+	TSharedPtr<Command> CurrentCommand;
 };
