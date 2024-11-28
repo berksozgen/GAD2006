@@ -87,7 +87,13 @@ void AGameManager_Lab2::OnActorClicked(AActor* Actor, FKey Button)
 
 bool AGameManager_Lab2::UndoLastMove()
 {
-	return !CommandPool.IsEmpty();
+	if(!CommandPool.IsEmpty())
+	{
+		auto LastMove = CommandPool.Pop();
+		LastMove->Revert();
+		return true;
+	}
+	return false;
 }
 
 
