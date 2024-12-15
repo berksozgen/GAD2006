@@ -15,5 +15,25 @@ class ANetGameMode : public AGameModeBase
 	GENERATED_BODY()
 
 	ANetGameMode();
+
+	virtual AActor* ChoosePlayerStart_Implementation(AController* Player) override;
+
+	UFUNCTION(BlueprintCallable)
+	void AvatarsOverlapped(class ANetAvatar* AvatarA, class ANetAvatar* AvatarB);
+
+	UFUNCTION(BlueprintCallable)
+	void EndGame();
+
+private:
+
+	int TotalPlayerCount;
+	int TotalGames;
+	int PlayerStartIndex;
+
+	TArray<APlayerController*> AllPlayers;
+
+	AActor* GetPlayerStart(FString Name, int Index);
+
+	AActor* AssignTeamAndPlayerStart(AController* Player);
 	
 };
