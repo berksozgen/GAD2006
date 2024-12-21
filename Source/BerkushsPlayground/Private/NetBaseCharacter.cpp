@@ -208,7 +208,7 @@ void ANetBaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 
 void ANetBaseCharacter::ChangeGender(bool bIsFemale)
 {
-	//PartSelection.bIsFemale = bIsFemale; idk what need to be chanced
+	ChangeBodyPart(EBodyPart::BP_BodyType, bIsFemale, false);
 	UpdateBodyParts();
 }
 

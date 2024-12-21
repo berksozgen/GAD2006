@@ -68,6 +68,12 @@ public:
 	bool bPlayerInfoReceived;
 
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	USkeletalMeshComponent* PartHands;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	USkeletalMeshComponent* PartLegs;
 	
 private:
 
@@ -85,13 +91,7 @@ private:
 
 	UPROPERTY()
 	UStaticMeshComponent* PartEyes;
-
-	UPROPERTY()
-	USkeletalMeshComponent* PartHands;
-
-	UPROPERTY()
-	USkeletalMeshComponent* PartLegs;
-
+	
 	int BodyPartIndices[(int)EBodyPart::BP_Count];
 
 	void UpdateBodyParts();
